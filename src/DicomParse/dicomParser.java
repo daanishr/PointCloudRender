@@ -41,14 +41,14 @@ public class dicomParser implements PixelParser
 		int width = image.getWidth();
 		int[][][] pixelComponents = new int[height][width][3];
 		
-		for(int i =0; i<height; i++)
+		for(int i =0; i<width; i++)
 		{
-			for(int j=0; j<width;j++)
+			for(int j=0; j<height;j++)
 			{
-				int rgb = image.getRGB(height, width);
-				pixelComponents[height][width][0]= getComponent(rgb, "red");
-				pixelComponents[height][width][1]= getComponent(rgb, "green");
-				pixelComponents[height][width][2]= getComponent(rgb, "blue");
+				int rgb = image.getRGB(i, j);
+				pixelComponents[i][j][0]= getComponent(rgb, "red");
+				pixelComponents[i][j][1]= getComponent(rgb, "green");
+				pixelComponents[i][j][2]= getComponent(rgb, "blue");
 			}
 		}
 		
@@ -69,5 +69,25 @@ public class dicomParser implements PixelParser
 		
 		return 0;
 	}
+	
+	public int[][] getRGBpixelvalues(BufferedImage image)
+	{
+		int height = image.getHeight();
+		int width = image.getWidth();
+		int[][] pixelComponents = new int[height][width];
+		
+		for(int i =0; i<height; i++)
+		{
+			for(int j=0; j<width;j++)
+			{
+				pixelComponents[height][width] = image.getRGB(height, width);
+			}
+		}
+		
+		return pixelComponents;
+		
+	}
+	
+	
 
 }
