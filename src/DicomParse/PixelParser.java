@@ -10,5 +10,6 @@ public interface PixelParser
 	public int[][][] getRGBComponents(BufferedImage image); 
 	
 	public int[][] getRGBpixelvalues(BufferedImage image);
+	
 
 }
