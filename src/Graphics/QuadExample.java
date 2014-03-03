@@ -59,7 +59,7 @@ ArrayList<float[]> colors;
 			{
 				for(int j=0; j<512;j++)
 				{
-					if(dcmPixelComponents[i][j][0] > 180)
+					if(dcmPixelComponents[i][j][0] >=180)
 					{
 						float[] p = new float[3];
 						p[0] = (float) i;

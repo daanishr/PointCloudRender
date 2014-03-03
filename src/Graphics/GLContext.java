@@ -2,58 +2,62 @@
 package Graphics;
 
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.util.glu.GLU.gluPerspective;
 
-import org.lwjgl.LWJGLException;
-import org.lwjgl.opengl.Display;
+import org.lwjgl.input.Keyboard;
 
 
 public class GLContext extends Application
 {
-	
+	private float rotAngle =0;
 		
 	public void Initialise()
 	{
 		
-		glViewport(0,0,Display.getWidth(), Display.getHeight());
+		   
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		//gluPerspective(45.0f, 800f/600f, 1, 200);
 		glOrtho(0, 800, 0, 600, 1, -1);
-		
 		glMatrixMode(GL_MODELVIEW);
-		glLoadIdentity();
-		
-		glEnable(GL_DEPTH_TEST);
-		glTranslatef(0.0f, 0.0f, -4.0f);
 	}
 	
 	public void render()
 	{
 		
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glLoadIdentity();
-		//glPointSize(100f);
-		glColor3f(0.0f,0.0f,1.0f);
-		glBegin(GL_QUADS);
-		/*
-		for (int i=0; i<512;i++)
-		{
-			for(int j=0; sj<512;j++)
-			{
-				glColor3f(dcmPixelComponents[i][j][0], dcmPixelComponents[i][j][1], dcmPixelComponents[i][j][2]);
-				glVertex3f(i,j, -3);
-			}
-		}
-		*/
-		
-		glVertex3f(1.0f,1.0f,0.0f);
-		glVertex3f(-1.0f,1.0f,0.0f);
-	    glVertex3f(-1.0f,-1.0f,0.0f);
-	    glVertex3f(1.0f,-1.0f,0.0f);
-		glEnd();
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	
+	    glPointSize(1.0f);
+	    
+	    glBegin(GL_POINTS);
+	    for(int i = 0; i < points.size(); ++i)
+	    {
+	    	float[] c = colors.get(i);
+	    	float[] p = points.get(i);
+	    	glColor3f(c[0], c[1], c[2]);
+	    	glVertex3f(p[0], p[1], p[2]);
+	    }
+	    
+	    
+	    glEnd();
+	    
+	    pollInput();
+	   
+	    glRotatef(rotAngle,0,1,0);
 	}
-		//glFlush();
+	
+	public void pollInput()
+    {
+    	while (Keyboard.next()) {
+    		if (Keyboard.getEventKeyState()) {
+    		if (Keyboard.getEventKey() == Keyboard.KEY_1) {
+    			rotAngle = 0.5f;
+    				}
+    	
+    		if (Keyboard.getEventKey() == Keyboard.KEY_3) {
+			}
+    			rotAngle = -0.5f;
+    		}
+    	}
+    }
+		
 		
 	
 	public void destroy()
