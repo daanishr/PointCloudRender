@@ -18,15 +18,16 @@ public class Application
 	
 	protected ArrayList<float[]> points = new ArrayList<float[]>();
 	protected ArrayList<float[]> colors = new ArrayList<float[]>();
+	protected Camera camera;
 	
 	public Application()
 	{
-		/*
+		
 		ArrayList<int[][][]> dcmList;
         dicomParser dcmParser = new dicomParser();
         dcmList = new ArrayList<int[][][]>();
        
-        for(int i=1; i<180;i++)
+        for(int i=1; i<186;i++)
         {
         	int number=i;
         	String path = "C:\\Users\\Kapil\\Downloads\\Whole_body_Bone_1mm_16\\IM-0005-";
@@ -50,7 +51,7 @@ public class Application
 			{
 				for(int j=0; j<512;j++)
 				{
-					if(dcmPixelComponents[i][j][0] >=180)
+					if(dcmPixelComponents[i][j][0] >=170)
 					{
 						float[] p = new float[3];
 						p[0] = (float) i;
@@ -68,7 +69,7 @@ public class Application
 				}
 			}
 	    }
-        */
+        
     System.out.println("LOADED!!!");
         
 		try{

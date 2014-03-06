@@ -32,7 +32,7 @@ ArrayList<float[]> colors;
         ArrayList<int[][][]> dcmList = new ArrayList<int[][][]>();
         dicomParser dcmParser = new dicomParser();
        
-        for(int i=1; i<180;i++)
+        for(int i=185; i<186;i++)
         {
         	int number=i;
         	String path = "C:\\Users\\Kapil\\Downloads\\Whole_body_Bone_1mm_16\\IM-0005-";
@@ -59,7 +59,7 @@ ArrayList<float[]> colors;
 			{
 				for(int j=0; j<512;j++)
 				{
-					if(dcmPixelComponents[i][j][0] >=180)
+					//if(dcmPixelComponents[i][j][0] >=170)
 					{
 						float[] p = new float[3];
 						p[0] = (float) i;
@@ -107,7 +107,7 @@ ArrayList<float[]> colors;
 	    
 	    pollInput();
 	   // GL11.glTranslatef(0, 100, 0);
-	    GL11.glRotatef(rotAngle,0,1,0);
+	    GL11.glRotatef(0,0,1,0);
 	    
 	    Display.update();
 	  //  GL11.glPopMatrix();
