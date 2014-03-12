@@ -88,15 +88,18 @@ public class Camera
 		glLoadIdentity();
 		gluPerspective(fieldOfView, aspectRatio, nearClip, farClip);
 		glMatrixMode(GL_MODELVIEW);
+		glEnable(GL_DEPTH_TEST);
 		
 	}
 	
 	public void useView()
 	{
+		
+		glTranslatef(x,y,z);
 		glRotatef(rotationX, 1,0,0);
 		glRotatef(rotationY, 0,1,0);
 		glRotatef(rotationZ, 0,0,1);
-		glTranslatef(x,y,z);
+		
 		
 	}
 	
@@ -109,5 +112,10 @@ public class Camera
 	public void rotateY(float amt)
 	{
 		rotationY+=amt;
+	}
+	
+	public void rotateX(float amt)
+	{
+		rotationX+=amt;
 	}
 }
